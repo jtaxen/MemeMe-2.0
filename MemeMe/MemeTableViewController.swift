@@ -16,8 +16,8 @@ class MemeTableViewController: UITableViewController {
 		return (UIApplication.shared.delegate as! AppDelegate).memes
 	}
 	
-	override func viewDidLoad() {
-		super.viewDidLoad()
+	override func viewWillAppear(_ animated: Bool) {
+		tableView.reloadData()
 	}
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -42,7 +42,5 @@ class MemeTableViewController: UITableViewController {
 	@IBAction func newMeme(_ sender: UIBarButtonItem) {
 		let controller = storyboard?.instantiateViewController(withIdentifier: "MemeEditor") as! MemeEditorViewController
 		present(controller, animated: true, completion: nil)
-		
 	}
-
 }

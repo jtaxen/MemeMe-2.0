@@ -17,6 +17,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
 	@IBOutlet var navbar: UINavigationBar!
 	@IBOutlet var shareButton: UIBarButtonItem!
 	@IBOutlet var cameraButton: UIBarButtonItem!
+	@IBOutlet weak var saveButton: UIBarButtonItem!
 	@IBOutlet weak var cancelButton: UIBarButtonItem!
 	
 	let textDelegate = TextFieldDelegate()
@@ -41,6 +42,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
 			field!.autocapitalizationType = .allCharacters
 		}
 		shareButton.isEnabled = false
+		saveButton.isEnabled = false
 		
 		// If user came here from table view, show the chosen meme in the editor
 		guard let meme = self.meme else { return }
@@ -48,6 +50,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
 		bottomTextField.text = meme.bottomString
 		pickedImage.image = meme.originalImage
 		shareButton.isEnabled = true
+		saveButton.isEnabled = true
 	}
 	
 	func save(_ memeImage: UIImage) {
@@ -148,6 +151,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
 		}
 		dismiss(animated: true, completion: nil)
 		shareButton.isEnabled = true
+		saveButton.isEnabled = true
 	}
 	
 	func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -163,6 +167,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
 	
 	@IBAction func onCancelButton(_ sender: UIBarButtonItem) {
 		dismiss(animated: true, completion: nil)
+	}
+	
+	@IBAction func onSaveButton(_ sender: UIBarButtonItem) {
+		save(generateMemeImage())
 	}
 }
 

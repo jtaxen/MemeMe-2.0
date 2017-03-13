@@ -30,6 +30,10 @@ class MemeCollectionViewController: UICollectionViewController {
 		flowLayout.itemSize = CGSize(width: dimension, height: dimension)
 	}
 	
+	override func viewWillAppear(_ animated: Bool) {
+		collectionView?.reloadData()
+	}
+	
 	override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		return memes.count
 	}
@@ -37,9 +41,7 @@ class MemeCollectionViewController: UICollectionViewController {
 	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath) as! MemeCollectionViewCell
 		let meme = memes[indexPath.row]
-		cell.topText = meme.topString
-		cell.bottomText = meme.bottomString
-		cell.image = meme.memeImage
+		cell.image.image = meme.memeImage
 		return cell
 	}
 	
@@ -47,7 +49,7 @@ class MemeCollectionViewController: UICollectionViewController {
 		let controller = storyboard?.instantiateViewController(withIdentifier: "MemeEditor") as! MemeEditorViewController
 		let meme = memes[indexPath.row]
 		controller.meme = meme
-		navigationController!.pushViewController(controller, animated: true)
+		present(controller, animated: true, completion: nil)
 	}
 
 	@IBAction func addMeme(_ sender: UIBarButtonItem) {
