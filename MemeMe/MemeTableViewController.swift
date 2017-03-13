@@ -13,7 +13,7 @@ class MemeTableViewController: UITableViewController {
 	
 	let appDelegate = UIApplication.shared.delegate as! AppDelegate
 	var memes: [Meme] {
-		return (UIApplication.shared.delegate as! AppDelegate).memes
+		return appDelegate.memes
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -29,6 +29,12 @@ class MemeTableViewController: UITableViewController {
 		let meme = memes[indexPath.row]
 		cell.textLabel?.text = meme.topString+" "+meme.bottomString
 		cell.imageView?.image = meme.memeImage
+		
+		// Gesture recogniser to swipe-delete cell
+		let swipeDeleteGestureRecogniser = UISwipeGestureRecognizer(target: self, action: #selector(swipeDelete(_:)))
+		swipeDeleteGestureRecogniser.direction = .left
+		cell.addGestureRecognizer(swipeDeleteGestureRecogniser)
+		
 		return cell
 	}
 	
@@ -42,5 +48,13 @@ class MemeTableViewController: UITableViewController {
 	@IBAction func newMeme(_ sender: UIBarButtonItem) {
 		let controller = storyboard?.instantiateViewController(withIdentifier: "MemeEditor") as! MemeEditorViewController
 		present(controller, animated: true, completion: nil)
+	}
+	
+	func swipeDelete(_ sender: UISwipeGestureRecognizer) {
+		if let indexPath = tableView.indexPathForRow(at: sender.accessibilityActivationPoint) {
+			appDelegate.memes.remove(at: indexPath.row)
+			tableView.deleteRows(at: [indexPath], with: .left)
+		}
+		tableView.reloadData()
 	}
 }
