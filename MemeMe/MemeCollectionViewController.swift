@@ -11,7 +11,7 @@ import UIKit
 
 class MemeCollectionViewController: UICollectionViewController {
 	
-	@IBOutlet weak var memeCell: MemeCollectionViewCell!
+//	@IBOutlet weak var memeCell: MemeCollectionViewCell!
 	@IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
 	
 	
@@ -50,4 +50,9 @@ class MemeCollectionViewController: UICollectionViewController {
 		navigationController!.pushViewController(controller, animated: true)
 	}
 
+	@IBAction func addMeme(_ sender: UIBarButtonItem) {
+		let controller = storyboard?.instantiateViewController(withIdentifier: "MemeEditor") as! MemeEditorViewController
+		present(controller, animated: true, completion: nil)
+		
+	}
 }

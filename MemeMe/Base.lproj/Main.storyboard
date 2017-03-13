@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="QKi-Kk-ypS">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -57,7 +57,15 @@
                             <outlet property="delegate" destination="y6a-R6-qK0" id="1UD-OI-klj"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="PlA-II-fsI"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="PlA-II-fsI">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="YLA-zm-mda">
+                            <connections>
+                                <action selector="newMeme:" destination="y6a-R6-qK0" id="GNx-z2-ai7"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pgd-bp-iM6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -81,11 +89,11 @@
             </objects>
             <point key="canvasLocation" x="-2450" y="498"/>
         </scene>
-        <!--Collection-->
+        <!--Navigation Controller-->
         <scene sceneID="jIq-Cy-IS8">
             <objects>
                 <navigationController id="7VI-up-vOF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Collection" id="2dx-HQ-jKQ"/>
+                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="2dx-HQ-jKQ"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ec2-Am-ajI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -133,22 +141,27 @@
                             <outlet property="delegate" destination="dQi-ea-TZD" id="UIN-JN-mUF"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="ORE-MQ-TJx"/>
+                    <navigationItem key="navigationItem" id="CGt-TI-cyT">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="BkL-ST-oJH">
+                            <connections>
+                                <action selector="addMeme:" destination="dQi-ea-TZD" id="9up-Ii-WD5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="flowLayout" destination="9sP-75-sYr" id="8d6-a9-Pdi"/>
-                        <outlet property="memeCell" destination="dCR-np-Pbl" id="7xG-hO-KOl"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xxh-aT-Lk5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-631.20000000000005" y="805.54722638680664"/>
         </scene>
-        <!--List-->
+        <!--Navigation Controller-->
         <scene sceneID="bIE-Hv-g0C">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="amq-tF-BLK" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="8gS-T5-SRC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="List" id="ECn-r2-Kqy"/>
+                    <tabBarItem key="tabBarItem" systemItem="mostViewed" id="ECn-r2-Kqy"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="zmC-3N-jHA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -173,10 +186,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YkX-C4-yaP">
-                                <rect key="frame" x="0.0" y="40" width="375" height="538"/>
+                                <rect key="frame" x="0.0" y="68" width="375" height="510"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="De flesta svenska fiskar" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uUw-bK-d2H">
-                                <rect key="frame" x="0.0" y="50" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="78" width="375" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="rIm-wv-085"/>
                                 </constraints>
@@ -193,21 +206,6 @@
                                 <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="40"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PuO-sp-2Nh">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="kfR-yF-pOj"/>
-                                </constraints>
-                                <items>
-                                    <navigationItem title="Make a meme" id="3Nj-SR-a3b">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="FCY-eM-RtK">
-                                            <connections>
-                                                <action selector="share:" destination="dkx-z0-nzr" id="CIO-my-Flb"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c8e-at-jzU">
                                 <rect key="frame" x="0.0" y="578" width="375" height="40"/>
                                 <constraints>
@@ -228,6 +226,26 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PuO-sp-2Nh">
+                                <rect key="frame" x="0.0" y="11" width="375" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="kfR-yF-pOj"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Make a meme" id="3Nj-SR-a3b">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="FCY-eM-RtK">
+                                            <connections>
+                                                <action selector="share:" destination="dkx-z0-nzr" id="CIO-my-Flb"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="TNA-mc-NSV">
+                                            <connections>
+                                                <action selector="onCancelButton:" destination="BYZ-38-t0r" id="zFb-YW-vnH"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -237,7 +255,7 @@
                             <constraint firstItem="YkX-C4-yaP" firstAttribute="top" secondItem="PuO-sp-2Nh" secondAttribute="bottom" id="6R5-Xo-fJT"/>
                             <constraint firstItem="c8e-at-jzU" firstAttribute="top" secondItem="YkX-C4-yaP" secondAttribute="bottom" id="CPZ-Lw-RRj"/>
                             <constraint firstItem="ukR-yH-3MP" firstAttribute="bottom" secondItem="YkX-C4-yaP" secondAttribute="bottom" constant="-10" id="Crz-lz-hOH"/>
-                            <constraint firstItem="PuO-sp-2Nh" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="HdC-bo-8SH"/>
+                            <constraint firstItem="PuO-sp-2Nh" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="28" id="HdC-bo-8SH"/>
                             <constraint firstAttribute="trailing" secondItem="YkX-C4-yaP" secondAttribute="trailing" id="Ip2-UG-q1P"/>
                             <constraint firstItem="PuO-sp-2Nh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="UBw-EZ-lYz"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="c8e-at-jzU" secondAttribute="bottom" id="XDb-Jg-KNO"/>
@@ -253,6 +271,7 @@
                     <connections>
                         <outlet property="bottomTextField" destination="ukR-yH-3MP" id="ORB-Rf-Ks4"/>
                         <outlet property="cameraButton" destination="SJe-AF-7Jm" id="Zth-oS-ZmD"/>
+                        <outlet property="cancelButton" destination="TNA-mc-NSV" id="QbD-kQ-9Im"/>
                         <outlet property="navbar" destination="PuO-sp-2Nh" id="Duh-us-dWm"/>
                         <outlet property="pickedImage" destination="YkX-C4-yaP" id="oWk-zU-fyQ"/>
                         <outlet property="shareButton" destination="FCY-eM-RtK" id="rlK-HK-ogc"/>
@@ -262,7 +281,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="376.80000000000001" y="277.51124437781112"/>
+            <point key="canvasLocation" x="358" y="407"/>
         </scene>
     </scenes>
     <resources>

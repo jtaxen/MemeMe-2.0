@@ -17,9 +17,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
 	@IBOutlet var navbar: UINavigationBar!
 	@IBOutlet var shareButton: UIBarButtonItem!
 	@IBOutlet var cameraButton: UIBarButtonItem!
+	@IBOutlet weak var cancelButton: UIBarButtonItem!
 	
 	let textDelegate = TextFieldDelegate()
-	var meme: Meme!
+	var meme: Meme?
 	
 	let memeTextAttributes:[String:Any] = [
 		NSStrokeColorAttributeName: UIColor.black,
@@ -37,8 +38,16 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
 			field!.delegate = textDelegate
 			field!.tag = (field == topTextField) ? 1 : 2
 			field!.text = (field == topTextField) ? "TOP" : "BOTTOM"
+			field!.autocapitalizationType = .allCharacters
 		}
 		shareButton.isEnabled = false
+		
+		// If user came here from table view, show the chosen meme in the editor
+		guard let meme = self.meme else { return }
+		topTextField.text = meme.topString
+		bottomTextField.text = meme.bottomString
+		pickedImage.image = meme.originalImage
+		shareButton.isEnabled = true
 	}
 	
 	func save(_ memeImage: UIImage) {
@@ -150,6 +159,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
 		controller.delegate = self
 		controller.sourceType = (sender.tag == 3) ? .photoLibrary : .camera
 		present(controller, animated: true, completion: nil)
+	}
+	
+	@IBAction func onCancelButton(_ sender: UIBarButtonItem) {
+		dismiss(animated: true, completion: nil)
 	}
 }
 

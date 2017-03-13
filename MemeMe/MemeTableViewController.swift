@@ -12,11 +12,12 @@ import UIKit
 class MemeTableViewController: UITableViewController {
 	
 	let appDelegate = UIApplication.shared.delegate as! AppDelegate
-	var memes: [Meme]!
+	var memes: [Meme] {
+		return (UIApplication.shared.delegate as! AppDelegate).memes
+	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		memes = appDelegate.memes
 	}
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -26,7 +27,7 @@ class MemeTableViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
 		let meme = memes[indexPath.row]
-		cell.textLabel?.text = meme.topString+meme.bottomString
+		cell.textLabel?.text = meme.topString+" "+meme.bottomString
 		cell.imageView?.image = meme.memeImage
 		return cell
 	}
@@ -35,7 +36,13 @@ class MemeTableViewController: UITableViewController {
 		let controller = storyboard?.instantiateViewController(withIdentifier: "MemeEditor") as! MemeEditorViewController
 		let meme = memes[indexPath.row]
 		controller.meme = meme
-		navigationController!.pushViewController(controller, animated: true)
+		present(controller, animated: true, completion: nil)
+	}
+	
+	@IBAction func newMeme(_ sender: UIBarButtonItem) {
+		let controller = storyboard?.instantiateViewController(withIdentifier: "MemeEditor") as! MemeEditorViewController
+		present(controller, animated: true, completion: nil)
+		
 	}
 
 }
