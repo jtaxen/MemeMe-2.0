@@ -33,6 +33,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		// Set attributes for text fields
 		for field in [topTextField, bottomTextField] {
 			field!.defaultTextAttributes = memeTextAttributes
 			field!.textAlignment = .center
@@ -68,6 +69,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
 	
 	func generateMemeImage() -> UIImage {
 		barsWillHide()
+		view.backgroundColor = UIColor.black
 		
 		UIGraphicsBeginImageContext(view.frame.size)
 		view.drawHierarchy(in: view.frame, afterScreenUpdates: true)
@@ -75,6 +77,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
 		UIGraphicsEndImageContext()
 		
 		barsWillShow()
+		view.backgroundColor = UIColor.darkGray
 		
 		return memeImage
 	}

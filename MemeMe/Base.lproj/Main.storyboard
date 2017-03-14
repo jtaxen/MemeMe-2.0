@@ -14,7 +14,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Your memes-->
+        <!--Meme details-->
         <scene sceneID="WdY-ja-49s">
             <objects>
                 <tableViewController id="y6a-R6-qK0" customClass="MemeTableViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
@@ -48,7 +48,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Your memes" id="PlA-II-fsI">
+                    <navigationItem key="navigationItem" title="Meme details" id="PlA-II-fsI">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="YLA-zm-mda">
                             <connections>
                                 <action selector="newMeme:" destination="y6a-R6-qK0" id="GNx-z2-ai7"/>
@@ -71,20 +71,20 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="8gS-T5-SRC" kind="relationship" relationship="viewControllers" id="7q2-x9-Vmp"/>
                         <segue destination="7VI-up-vOF" kind="relationship" relationship="viewControllers" id="FDJ-NT-caI"/>
+                        <segue destination="8gS-T5-SRC" kind="relationship" relationship="viewControllers" id="7q2-x9-Vmp"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Wl-JT-lP4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2450" y="498"/>
         </scene>
-        <!--Collection-->
+        <!--Sent memes-->
         <scene sceneID="jIq-Cy-IS8">
             <objects>
                 <navigationController id="7VI-up-vOF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Collection" id="2dx-HQ-jKQ"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ec2-Am-ajI">
+                    <tabBarItem key="tabBarItem" title="Sent memes" image="collectionViewIcon" id="2dx-HQ-jKQ"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ec2-Am-ajI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -96,11 +96,11 @@
             </objects>
             <point key="canvasLocation" x="-1577" y="806"/>
         </scene>
-        <!--Your memes-->
+        <!--Sent memes-->
         <scene sceneID="fNY-Uw-ZVp">
             <objects>
                 <collectionViewController id="dQi-ea-TZD" customClass="MemeCollectionViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="qDd-tk-OfH">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="qDd-tk-OfH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -139,7 +139,7 @@
                             <outlet property="delegate" destination="dQi-ea-TZD" id="UIN-JN-mUF"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Your memes" id="CGt-TI-cyT">
+                    <navigationItem key="navigationItem" title="Sent memes" id="CGt-TI-cyT">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="BkL-ST-oJH">
                             <connections>
                                 <action selector="addMeme:" destination="dQi-ea-TZD" id="9up-Ii-WD5"/>
@@ -154,12 +154,12 @@
             </objects>
             <point key="canvasLocation" x="-631.20000000000005" y="805.54722638680664"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Meme details-->
         <scene sceneID="bIE-Hv-g0C">
             <objects>
                 <navigationController id="8gS-T5-SRC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="mostViewed" id="ECn-r2-Kqy"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="zmC-3N-jHA">
+                    <tabBarItem key="tabBarItem" title="Meme details" image="tableViewIcon" id="ECn-r2-Kqy"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zmC-3N-jHA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -289,4 +289,8 @@
             <point key="canvasLocation" x="358" y="407"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="collectionViewIcon" width="20" height="20"/>
+        <image name="tableViewIcon" width="20" height="20"/>
+    </resources>
 </document>

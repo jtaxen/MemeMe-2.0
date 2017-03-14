@@ -51,8 +51,8 @@ class MemeTableViewController: UITableViewController {
 	}
 	
 	func swipeDelete(_ sender: UISwipeGestureRecognizer) {
-		if let indexPath = tableView.indexPathForRow(at: sender.accessibilityActivationPoint) {
-			appDelegate.memes.remove(at: indexPath.row)
+		if let indexPath = tableView.indexPathForRow(at: sender.location(in: tableView)) {
+						appDelegate.memes.remove(at: indexPath.row)
 			tableView.deleteRows(at: [indexPath], with: .left)
 		}
 		tableView.reloadData()
